@@ -1,6 +1,10 @@
 ﻿body {
     background: #f7f7f7;
     padding-right: 35px;
+    font: 400 1em/1.5 PingFang SC,Lantinghei SC,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans;
+}
+button {
+    font: 400 1em/1.5 PingFang SC,Lantinghei SC,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans;
 }
 .topbar {
     display: block;
@@ -388,13 +392,162 @@
         }
     }
 
-    .sidebarcart-caption {
-        background: #fff;
-        font-size: 16px;
-        color: #999;
-        padding: 5px 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #ddd;
+    .sidebar-content {
+        margin-left: 35px;
+        height: 100%;
+        width: 295px;
+        overflow: auto;
+        background-color: #e6e6e6;
+
+        .sidebarcart-caption {
+            background: #fff;
+            font-size: 16px;
+            color: #999;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sidebarcart-caption > a {
+            max-width: 240px;
+            display: inline-block;
+            line-height: 16px;
+            color: #333;
+            text-decoration: none;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .sidebarcart dl {
+            padding: 10px;
+            background-color: #fff;
+            border: solid #ddd;
+            border-width: 1px 0;
+            margin-bottom: 10px;
+        }
+
+        .sidebarcart dt {
+            font-size: 12px;
+            border-bottom: 1px solid #ddd;
+            padding: 2px 3px;
+            color: #666;
+        }
+
+        .sidebarcart dd {
+            margin: 0px;
+            padding: 0px;
+            display: block;
+        }
+
+        .sidebarcart dd ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0;
+        }
+
+        .sidebarcart li {
+            margin: 5px 0;
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 20px;
+            color: #666;
+        }
+
+        .sidebarcart-clear {
+            float: right;
+            text-decoration: none;
+            color: #0089dc;
+        }
+
+        .sidebarcart-name {
+            float: left;
+            width: 45%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .sidebarcart-quantity {
+            float: left;
+            width: 26%;
+        }
+
+        .sidebarcart-price {
+            font-weight: 700;
+            float: right;
+            color: #f17530;
+        }
+
+        .sidebarcart-quantity span:first-child {
+            border-right: none;
+        }
+
+        .sidebarcart-quantity span {
+            transition: opacity .2s ease,visibility .2s ease;
+            user-select: none;
+            background: #f5f5f5;
+            color: #999;
+            vertical-align: bottom;
+            font-size: 12px;
+            line-height: 18px;
+            cursor: pointer;
+            float: left;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .sidebarcart-quantity input {
+            font-size: 12px;
+            color: #666;
+            float: left;
+            display: inline-block;
+            height: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            width: 20px;
+            line-height: normal;
+        }
+
+        .sidebarcart-quantity input + span {
+            border-left: none;
+        }
+
+        .sidebarcart-summary {
+            padding: 20px 10px;
+            text-align: right;
+            border-top: 1px solid #ddd;
+            width: 295px;
+            left: 35px;
+            bottom: 0;
+            background: #fff;
+            opacity: .95;
+            position: absolute;
+
+            .sidebarcart-summary p {
+                font-size: 14px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .color-stress {
+                color: #f74342;
+            }
+
+            .sidebarcart-submit {
+                display: block;
+                border: 0;
+                margin-top: 10px;
+                line-height: 32px;
+                width: 100%;
+                text-align: center;
+                background: #fa5858;
+                color: #fff;
+            }
+        }
     }
 }
 

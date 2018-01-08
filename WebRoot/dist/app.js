@@ -29294,7 +29294,9 @@ var Home = function (_React$Component) {
         _this.handleFilter = _this.handleFilter.bind(_this);
 
         _this.state = {
-            sideType: ''
+            sideType: '',
+            transform: 'translate3d(0px, 0px, 0px)',
+            showSide: false
         };
         return _this;
     }
@@ -29320,7 +29322,11 @@ var Home = function (_React$Component) {
         key: 'handleTypeClick',
         value: function handleTypeClick(type) {
             console.log(type);
-            this.setState({ sideType: type });
+            if (!this.state.showSide) {
+                this.setState({ sideType: type, transform: 'translate3d(-295px, 0px, 0px)', showSide: true });
+            } else {
+                this.setState({ sideType: type, transform: 'translate3d(0px, 0px, 0px)', showSide: false });
+            }
         }
     }, {
         key: 'render',
@@ -29333,9 +29339,9 @@ var Home = function (_React$Component) {
                 null,
                 React.createElement(
                     'div',
-                    { className: 'sidebar', role: 'complementary' },
+                    { className: 'sidebar', role: 'complementary', style: { transform: this.state.transform } },
                     React.createElement(_sidebartab2.default, { onHandleTypeChange: this.handleTypeClick.bind(this) }),
-                    React.createElement(_sidebarcontent2.default, null)
+                    React.createElement(_sidebarcontent2.default, { type: this.state.sideType })
                 ),
                 React.createElement(
                     'div',
@@ -34220,9 +34226,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = __webpack_require__(1);
 
-var _sidebarcaption = __webpack_require__(133);
+var _propTypes = __webpack_require__(4);
 
-var _sidebarcaption2 = _interopRequireDefault(_sidebarcaption);
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34238,16 +34244,151 @@ var SidebarContent = function (_Component) {
     function SidebarContent(props) {
         _classCallCheck(this, SidebarContent);
 
-        return _possibleConstructorReturn(this, (SidebarContent.__proto__ || Object.getPrototypeOf(SidebarContent)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (SidebarContent.__proto__ || Object.getPrototypeOf(SidebarContent)).call(this, props));
+
+        _this.propTypes = {
+            type: _propTypes2.default.number,
+            cartArry: _propTypes2.default.array
+        };
+        _this.state = {
+            total: 0,
+            number: 0,
+            cartArry: [{
+                id: 0,
+                commodityArry: [{
+                    id: 1,
+                    title: '金牌牛腩炖土豆套餐',
+                    quantity: 1,
+                    price: 36.5
+                }]
+            }, {
+                id: 1,
+                commodityArry: [{
+                    id: 1,
+                    title: '金牌牛腩炖土豆套餐',
+                    quantity: 1,
+                    price: 36.5
+                }]
+            }]
+        };
+        return _this;
     }
 
     _createClass(SidebarContent, [{
+        key: 'handleChange',
+        value: function handleChange(id, e) {}
+    }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
+            var type = this.props.type;
+
             return React.createElement(
                 'div',
                 { className: 'sidebar-content' },
-                React.createElement(_sidebarcaption2.default, null)
+                React.createElement(
+                    'div',
+                    { className: 'sidebarcart-caption' },
+                    type == 1 ? React.createElement(
+                        'a',
+                        { href: '/' },
+                        '\u8D2D\u7269\u8F66'
+                    ) : React.createElement(
+                        'a',
+                        { href: '/' },
+                        '\u6211\u7684\u6D88\u606F'
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'sidebarcart' },
+                    this.state.cartArry.length != 0 ? this.state.cartArry.map(function (p) {
+                        return React.createElement(
+                            'dl',
+                            null,
+                            React.createElement(
+                                'dt',
+                                null,
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    p.id + 1,
+                                    '\u53F7\u8D2D\u7269\u8F66'
+                                ),
+                                React.createElement(
+                                    'a',
+                                    { href: 'javascript:void(0);', className: 'sidebarcart-clear' },
+                                    '[\u6E05\u7A7A]'
+                                )
+                            ),
+                            React.createElement(
+                                'dd',
+                                null,
+                                React.createElement(
+                                    'ul',
+                                    null,
+                                    p.commodityArry.map(function (i) {
+                                        return React.createElement(
+                                            'li',
+                                            { className: 'clearfix' },
+                                            React.createElement(
+                                                'div',
+                                                { className: 'sidebarcart-name' },
+                                                i.title
+                                            ),
+                                            React.createElement(
+                                                'div',
+                                                { className: 'sidebarcart-quantity' },
+                                                React.createElement(
+                                                    'span',
+                                                    null,
+                                                    '-'
+                                                ),
+                                                React.createElement('input', { className: 'ng-pristine', value: i.quantity, onChange: _this2.handleChange.bind(_this2, i.id) }),
+                                                React.createElement(
+                                                    'span',
+                                                    null,
+                                                    '+'
+                                                )
+                                            ),
+                                            React.createElement(
+                                                'div',
+                                                { className: 'sidebarcart-price' },
+                                                i.price
+                                            )
+                                        );
+                                    })
+                                )
+                            )
+                        );
+                    }) : ''
+                ),
+                this.state.cartArry.length != 0 ? React.createElement(
+                    'div',
+                    { className: 'sidebarcart-summary' },
+                    React.createElement(
+                        'p',
+                        null,
+                        '\u5171',
+                        React.createElement(
+                            'span',
+                            { className: 'color-stress' },
+                            this.state.number
+                        ),
+                        '\u4EFD,\u603B\u8BA1',
+                        React.createElement(
+                            'span',
+                            { className: 'color-stress' },
+                            this.state.total
+                        )
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'sidebarcart-submit' },
+                        '\u53BB\u7ED3\u7B97'
+                    )
+                ) : ''
             );
         }
     }]);
@@ -34256,48 +34397,6 @@ var SidebarContent = function (_Component) {
 }(_react.Component);
 
 exports.default = SidebarContent;
-
-/***/ }),
-/* 133 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SidebarCaption = function (_Component) {
-    _inherits(SidebarCaption, _Component);
-
-    function SidebarCaption(props) {
-        _classCallCheck(this, SidebarCaption);
-
-        return _possibleConstructorReturn(this, (SidebarCaption.__proto__ || Object.getPrototypeOf(SidebarCaption)).call(this, props));
-    }
-
-    _createClass(SidebarCaption, [{
-        key: "render",
-        value: function render() {
-            return React.createElement("div", { className: "sidebarcart-caption" });
-        }
-    }]);
-
-    return SidebarCaption;
-}(_react.Component);
-
-exports.default = SidebarCaption;
 
 /***/ })
 /******/ ]);

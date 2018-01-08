@@ -33,7 +33,9 @@ class Home extends React.Component {
         this.handleFilter = this.handleFilter.bind(this);
 
         this.state = {
-            sideType: ''
+            sideType: '',
+            transform: 'translate3d(0px, 0px, 0px)',
+            showSide: false
         }
     }
 
@@ -52,7 +54,12 @@ class Home extends React.Component {
 
     handleTypeClick(type) {
         console.log(type)
-        this.setState({ sideType: type });
+        if (!this.state.showSide) {
+            this.setState({ sideType: type, transform: 'translate3d(-295px, 0px, 0px)', showSide: true });
+        }
+        else {
+            this.setState({ sideType: type, transform: 'translate3d(0px, 0px, 0px)', showSide: false });
+        }
     }
 
     render() {
@@ -60,9 +67,9 @@ class Home extends React.Component {
         let { items } = this.props;
         return (
             <div>
-                <div className="sidebar" role="complementary">
+                <div className="sidebar" role="complementary" style={{ transform: this.state.transform }}>
                     <SidebarTab onHandleTypeChange={this.handleTypeClick.bind(this)} />
-                    <SidebarContent />
+                    <SidebarContent type={this.state.sideType}/>
                 </div>
                 <div className="main">
                     <div className="container clearfix">

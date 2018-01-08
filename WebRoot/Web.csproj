@@ -87,7 +87,6 @@
     <Content Include="app\components\common\header.jsx" />
     <Content Include="app\components\main\bussinescontent.jsx" />
     <Content Include="app\components\main\bussineslogo.jsx" />
-    <Content Include="app\components\sidebar\sidebarcaption.jsx" />
     <Content Include="app\components\sidebar\sidebarmiddle.jsx" />
     <Content Include="app\containers\main\business.jsx" />
     <Content Include="app\containers\main\fulltext.jsx" />
