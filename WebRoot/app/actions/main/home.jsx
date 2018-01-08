@@ -19,8 +19,3 @@ export const fetchGetBusiness = () => {
     }
 }
 
-export const TYPE_CHANGE = 'TYPE_CHANGE';
-export function typeChange(type) {
-    return { type: TYPE_CHANGE,type };
-}
-

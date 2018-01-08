@@ -83,21 +83,16 @@
   <ItemGroup>
     <Content Include="app.jsx" />
     <Content Include="app\actions\main\home.jsx" />
-    <Content Include="app\common.jsx" />
     <Content Include="app\components\common\footer.jsx" />
     <Content Include="app\components\common\header.jsx" />
     <Content Include="app\components\main\bussinescontent.jsx" />
     <Content Include="app\components\main\bussineslogo.jsx" />
-    <Content Include="app\components\sidebar\sidebarbottom.jsx" />
-    <Content Include="app\components\sidebar\sidebarcaption.jsx" />
-    <Content Include="app\components\sidebar\sidebarmiddle.jsx" />
     <Content Include="app\containers\main\business.jsx" />
     <Content Include="app\containers\main\fulltext.jsx" />
     <Content Include="app\containers\main\location.jsx" />
+    <Content Include="app\containers\main\rightsilder.jsx" />
     <Content Include="app\containers\main\showtab.jsx" />
     <Content Include="app\containers\main\tab.jsx" />
-    <Content Include="app\containers\sidebar\sidebarcontent.jsx" />
-    <Content Include="app\containers\sidebar\sidebartab.jsx" />
     <Content Include="app\home.jsx" />
     <Content Include="app\reducers\index.jsx" />
     <Content Include="app\reducers\main\home.jsx" />
