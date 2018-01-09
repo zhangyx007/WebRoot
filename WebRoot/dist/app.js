@@ -34226,11 +34226,25 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = __webpack_require__(1);
 
+var _lodash = __webpack_require__(127);
+
+var _ = _interopRequireWildcard(_lodash);
+
 var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _sidebarcart = __webpack_require__(134);
+
+var _sidebarcart2 = _interopRequireDefault(_sidebarcart);
+
+var _summary = __webpack_require__(135);
+
+var _summary2 = _interopRequireDefault(_summary);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34259,15 +34273,17 @@ var SidebarContent = function (_Component) {
                     id: 1,
                     title: '金牌牛腩炖土豆套餐',
                     quantity: 1,
-                    price: 36.5
+                    price: 36.5,
+                    showPrice: 36.5
                 }]
             }, {
                 id: 1,
                 commodityArry: [{
                     id: 1,
                     title: '金牌牛腩炖土豆套餐',
-                    quantity: 1,
-                    price: 36.5
+                    quantity: 2,
+                    price: 36.5,
+                    showPrice: 36.5
                 }]
             }]
         };
@@ -34275,13 +34291,96 @@ var SidebarContent = function (_Component) {
     }
 
     _createClass(SidebarContent, [{
-        key: 'handleChange',
-        value: function handleChange(id, e) {}
+        key: 'handleSettlement',
+        value: function handleSettlement(num, tol) {
+            console.log(num, tol);
+        }
+    }, {
+        key: 'handleClear',
+        value: function handleClear(id, e) {
+            var arry = this.state.cartArry;
+            _.remove(arry, function (p) {
+                return p.id == id;
+            });
+            this.setState({ cartArry: arry });
+            this.state.total = 0;
+            this.state.number = 0;
+            this.settlement();
+        }
+    }, {
+        key: 'handleAddChange',
+        value: function handleAddChange(cartId, id) {
+            var _this2 = this;
+
+            var arry = this.state.cartArry;
+            arry.forEach(function (p) {
+                if (p.id === cartId) {
+                    p.commodityArry.forEach(function (i) {
+                        if (i.id === id) {
+                            i.quantity = i.quantity + 1;
+                            i.showPrice += i.price;
+                            _this2.state.total = _this2.state.total + i.price;
+                            _this2.state.number = _this2.state.number + 1;
+                        }
+                    });
+                }
+            });
+            this.setState({ cartArry: arry });
+        }
+    }, {
+        key: 'handleRemoveChange',
+        value: function handleRemoveChange(cartId, id) {
+            var _this3 = this;
+
+            var arry = this.state.cartArry;
+            arry.forEach(function (p) {
+                if (p.id === cartId) {
+                    p.commodityArry.forEach(function (i) {
+                        if (i.id === id) {
+                            i.quantity = i.quantity - 1;
+                            i.showPrice -= i.price;
+                            _this3.state.total = _this3.state.total - i.price;
+                            _this3.state.number = _this3.state.number - 1;
+                            if (i.quantity == 0) {
+                                _.remove(p.commodityArry, function (l) {
+                                    return l.id == i.id;
+                                });
+                            }
+                        }
+                    });
+                    if (p.commodityArry.length == 0) {
+                        _.remove(arry, function (i) {
+                            return i.id == p.id;
+                        });
+                    }
+                }
+            });
+            this.setState({ cartArry: arry });
+        }
+    }, {
+        key: 'settlement',
+        value: function settlement() {
+            var _this4 = this;
+
+            if (this.state.cartArry != null && this.state.cartArry.length != 0) {
+                this.state.cartArry.forEach(function (p) {
+                    if (p != null && p.commodityArry.length != 0) {
+                        p.commodityArry.forEach(function (i) {
+                            _this4.state.total += i.showPrice;
+                            _this4.state.number += i.quantity;
+                        });
+                    }
+                });
+            }
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.settlement();
+        }
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
-
             var type = this.props.type;
 
             return React.createElement(
@@ -34300,95 +34399,17 @@ var SidebarContent = function (_Component) {
                         '\u6211\u7684\u6D88\u606F'
                     )
                 ),
-                React.createElement(
-                    'div',
-                    { className: 'sidebarcart' },
-                    this.state.cartArry.length != 0 ? this.state.cartArry.map(function (p) {
-                        return React.createElement(
-                            'dl',
-                            null,
-                            React.createElement(
-                                'dt',
-                                null,
-                                React.createElement(
-                                    'span',
-                                    null,
-                                    p.id + 1,
-                                    '\u53F7\u8D2D\u7269\u8F66'
-                                ),
-                                React.createElement(
-                                    'a',
-                                    { href: 'javascript:void(0);', className: 'sidebarcart-clear' },
-                                    '[\u6E05\u7A7A]'
-                                )
-                            ),
-                            React.createElement(
-                                'dd',
-                                null,
-                                React.createElement(
-                                    'ul',
-                                    null,
-                                    p.commodityArry.map(function (i) {
-                                        return React.createElement(
-                                            'li',
-                                            { className: 'clearfix' },
-                                            React.createElement(
-                                                'div',
-                                                { className: 'sidebarcart-name' },
-                                                i.title
-                                            ),
-                                            React.createElement(
-                                                'div',
-                                                { className: 'sidebarcart-quantity' },
-                                                React.createElement(
-                                                    'span',
-                                                    null,
-                                                    '-'
-                                                ),
-                                                React.createElement('input', { className: 'ng-pristine', value: i.quantity, onChange: _this2.handleChange.bind(_this2, i.id) }),
-                                                React.createElement(
-                                                    'span',
-                                                    null,
-                                                    '+'
-                                                )
-                                            ),
-                                            React.createElement(
-                                                'div',
-                                                { className: 'sidebarcart-price' },
-                                                i.price
-                                            )
-                                        );
-                                    })
-                                )
-                            )
-                        );
-                    }) : ''
-                ),
-                this.state.cartArry.length != 0 ? React.createElement(
-                    'div',
-                    { className: 'sidebarcart-summary' },
-                    React.createElement(
-                        'p',
-                        null,
-                        '\u5171',
-                        React.createElement(
-                            'span',
-                            { className: 'color-stress' },
-                            this.state.number
-                        ),
-                        '\u4EFD,\u603B\u8BA1',
-                        React.createElement(
-                            'span',
-                            { className: 'color-stress' },
-                            this.state.total
-                        )
-                    ),
-                    React.createElement(
-                        'button',
-                        { className: 'sidebarcart-submit' },
-                        '\u53BB\u7ED3\u7B97'
-                    )
-                ) : ''
+                React.createElement(_sidebarcart2.default, {
+                    cartArry: this.state.cartArry,
+                    onHandleAddChange: this.handleAddChange.bind(this),
+                    onHandleRemoveChange: this.handleRemoveChange.bind(this),
+                    onHandleClear: this.handleClear.bind(this)
+                }),
+                this.state.cartArry.length != 0 ? React.createElement(_summary2.default, {
+                    number: this.state.number,
+                    total: this.state.total,
+                    onHandleSettlement: this.handleSettlement.bind(this)
+                }) : ''
             );
         }
     }]);
@@ -34397,6 +34418,237 @@ var SidebarContent = function (_Component) {
 }(_react.Component);
 
 exports.default = SidebarContent;
+
+/***/ }),
+/* 133 */,
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _propTypes = __webpack_require__(4);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SidebarCart = function (_Component) {
+    _inherits(SidebarCart, _Component);
+
+    function SidebarCart(props) {
+        _classCallCheck(this, SidebarCart);
+
+        var _this = _possibleConstructorReturn(this, (SidebarCart.__proto__ || Object.getPrototypeOf(SidebarCart)).call(this, props));
+
+        _this.propTypes = {
+            cartArry: _propTypes2.default.array,
+            onHandleAddChange: _propTypes2.default.func,
+            onHandleRemoveChange: _propTypes2.default.func,
+            onHandleClear: _propTypes2.default.func
+        };
+        return _this;
+    }
+
+    _createClass(SidebarCart, [{
+        key: 'handleClear',
+        value: function handleClear(id, e) {
+            this.props.onHandleClear(id);
+        }
+    }, {
+        key: 'handleAdd',
+        value: function handleAdd(cartid, id, e) {
+            this.props.onHandleAddChange(cartid, id);
+        }
+    }, {
+        key: 'handleRemove',
+        value: function handleRemove(cartid, id, e) {
+            this.props.onHandleRemoveChange(cartid, id);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var cartArry = this.props.cartArry;
+
+            return React.createElement(
+                'div',
+                { className: 'sidebarcart' },
+                cartArry.length != 0 ? cartArry.map(function (p) {
+                    return React.createElement(
+                        'dl',
+                        null,
+                        React.createElement(
+                            'dt',
+                            null,
+                            React.createElement(
+                                'span',
+                                null,
+                                p.id + 1,
+                                '\u53F7\u8D2D\u7269\u8F66'
+                            ),
+                            React.createElement(
+                                'a',
+                                { href: 'javascript:void(0);', className: 'sidebarcart-clear', onClick: _this2.handleClear.bind(_this2, p.id) },
+                                '[\u6E05\u7A7A]'
+                            )
+                        ),
+                        React.createElement(
+                            'dd',
+                            null,
+                            React.createElement(
+                                'ul',
+                                null,
+                                p.commodityArry.map(function (i) {
+                                    return React.createElement(
+                                        'li',
+                                        { className: 'clearfix' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'sidebarcart-name' },
+                                            i.title
+                                        ),
+                                        React.createElement(
+                                            'div',
+                                            { className: 'sidebarcart-quantity' },
+                                            React.createElement(
+                                                'span',
+                                                { onClick: _this2.handleRemove.bind(_this2, p.id, i.id) },
+                                                '-'
+                                            ),
+                                            React.createElement('input', { className: 'ng-pristine', value: i.quantity, disabled: true }),
+                                            React.createElement(
+                                                'span',
+                                                { onClick: _this2.handleAdd.bind(_this2, p.id, i.id) },
+                                                '+'
+                                            )
+                                        ),
+                                        React.createElement(
+                                            'div',
+                                            { className: 'sidebarcart-price' },
+                                            i.showPrice
+                                        )
+                                    );
+                                })
+                            )
+                        )
+                    );
+                }) : ''
+            );
+        }
+    }]);
+
+    return SidebarCart;
+}(_react.Component);
+
+exports.default = SidebarCart;
+
+/***/ }),
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _propTypes = __webpack_require__(4);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Summary = function (_Component) {
+    _inherits(Summary, _Component);
+
+    function Summary(props) {
+        _classCallCheck(this, Summary);
+
+        var _this = _possibleConstructorReturn(this, (Summary.__proto__ || Object.getPrototypeOf(Summary)).call(this, props));
+
+        _this.propTypes = {
+            number: _propTypes2.default.number.isRequired,
+            total: _propTypes2.default.number.isRequired,
+            onHandleSettlement: _propTypes2.default.func
+        };
+        return _this;
+    }
+
+    _createClass(Summary, [{
+        key: 'handleClick',
+        value: function handleClick(e) {
+            var _props = this.props,
+                number = _props.number,
+                total = _props.total;
+
+            this.props.onHandleSettlement(number, total);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _props2 = this.props,
+                number = _props2.number,
+                total = _props2.total;
+
+            return React.createElement(
+                'div',
+                { className: 'sidebarcart-summary' },
+                React.createElement(
+                    'p',
+                    null,
+                    '\u5171',
+                    React.createElement(
+                        'span',
+                        { className: 'color-stress' },
+                        number
+                    ),
+                    '\u4EFD,\u603B\u8BA1',
+                    React.createElement(
+                        'span',
+                        { className: 'color-stress' },
+                        total
+                    )
+                ),
+                React.createElement(
+                    'button',
+                    { className: 'sidebarcart-submit', onClick: this.handleClick.bind(this) },
+                    '\u53BB\u7ED3\u7B97'
+                )
+            );
+        }
+    }]);
+
+    return Summary;
+}(_react.Component);
+
+exports.default = Summary;
 
 /***/ })
 /******/ ]);
