@@ -1,24 +1,14 @@
 ﻿import { Router, Route, IndexRoute } from 'react-router';
 import Home from './home'
 import Header from './components/common/header'
-
-//const routeConfigure = [
-//    {
-//        path: '/',
-//        component: Header,
-//        indexRoute: { component: Home },
-//        childRoutes: [
-//            {
-//            }
-//        ]
-//    }
-//]
+import Shop from './containers/shop/index'
 
 const routeConfigure = (
     <Router>
         <Route path="/" component={Header}>
             <IndexRoute component={Home} />
-        </Route>
+            <Route path="/:id" component={Shop} />
+        </Route>        
     </Router>
 );
 

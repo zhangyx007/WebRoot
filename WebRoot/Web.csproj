@@ -96,6 +96,7 @@
     <Content Include="app\containers\main\rightsilder.jsx" />
     <Content Include="app\containers\main\showtab.jsx" />
     <Content Include="app\containers\main\tab.jsx" />
+    <Content Include="app\containers\shop\index.jsx" />
     <Content Include="app\containers\sidebar\sidebarcontent.jsx" />
     <Content Include="app\containers\sidebar\sidebartab.jsx" />
     <Content Include="app\home.jsx" />
