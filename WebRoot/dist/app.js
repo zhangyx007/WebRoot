@@ -28618,7 +28618,8 @@ var Header = function (_Component) {
 
         _this.state = {
             active: (_active = {}, _defineProperty(_active, 0, 'topbar-item focus'), _defineProperty(_active, 1, 'topbar-item'), _active),
-            userName: ''
+            userName: '',
+            tobar: 'topbar'
         };
         return _this;
     }
@@ -28631,22 +28632,53 @@ var Header = function (_Component) {
             this.setState({ userName: user });
         }
     }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _nextProps = nextProps,
+                params = _nextProps.params;
+
+            if (params.id) {
+                var _active2;
+
+                this.setState({ tobar: 'topbar shoptopbar', active: (_active2 = {}, _defineProperty(_active2, 0, 'topbar-item'), _defineProperty(_active2, 1, 'topbar-item'), _active2) });
+            } else {
+                var _active3;
+
+                this.setState({ tobar: 'topbar', active: (_active3 = {}, _defineProperty(_active3, 0, 'topbar-item focus'), _defineProperty(_active3, 1, 'topbar-item'), _active3) });
+            }
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            var params = nextProps.params;
+
+            if (params.id) {
+                var _active4;
+
+                this.setState({ tobar: 'topbar shoptopbar', active: (_active4 = {}, _defineProperty(_active4, 0, 'topbar-item'), _defineProperty(_active4, 1, 'topbar-item'), _active4) });
+            } else {
+                var _active5;
+
+                this.setState({ tobar: 'topbar', active: (_active5 = {}, _defineProperty(_active5, 0, 'topbar-item focus'), _defineProperty(_active5, 1, 'topbar-item'), _active5) });
+            }
+        }
+    }, {
         key: 'handleMenuClick',
         value: function handleMenuClick(index, e) {
             var router = this.props.router;
 
             if (index === 0 || index === undefined) {
-                var _active2;
+                var _active6;
 
                 this.setState({
-                    active: (_active2 = {}, _defineProperty(_active2, 0, 'topbar-item focus'), _defineProperty(_active2, 1, 'topbar-item'), _active2)
+                    active: (_active6 = {}, _defineProperty(_active6, 0, 'topbar-item focus'), _defineProperty(_active6, 1, 'topbar-item'), _active6)
                 });
                 this.router.push('/');
             } else {
-                var _active3;
+                var _active7;
 
                 this.setState({
-                    active: (_active3 = {}, _defineProperty(_active3, 0, 'topbar-item'), _defineProperty(_active3, 1, 'topbar-item focus'), _active3)
+                    active: (_active7 = {}, _defineProperty(_active7, 0, 'topbar-item'), _defineProperty(_active7, 1, 'topbar-item focus'), _active7)
                 });
                 this.router.push('');
             }
@@ -28663,7 +28695,7 @@ var Header = function (_Component) {
                     null,
                     React.createElement(
                         'header',
-                        { className: 'topbar', role: 'navigation' },
+                        { className: this.state.tobar, role: 'navigation' },
                         React.createElement(
                             'div',
                             { className: 'container clearfix' },
@@ -34670,7 +34702,10 @@ var Shop = function (_Component) {
     function Shop(props) {
         _classCallCheck(this, Shop);
 
-        return _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).call(this, props));
+
+        var params = _this.props.params;
+        return _this;
     }
 
     _createClass(Shop, [{

@@ -9,7 +9,8 @@ class Header extends Component {
                 [0]: 'topbar-item focus',
                 [1]: 'topbar-item'
             },
-            userName: ''
+            userName: '',
+            tobar: 'topbar'
         };
     }
 
@@ -17,6 +18,39 @@ class Header extends Component {
         let user = sessionStorage.getItem('user');
         //user = 'yxzhang';
         this.setState({ userName: user })
+
+    }
+
+    componentDidMount(){
+        let { params } = nextProps;
+        if (params.id) {
+            this.setState({ tobar: 'topbar shoptopbar',active:{
+                [0]:'topbar-item',
+                [1]:'topbar-item'
+            }})
+        }
+        else {
+            this.setState({ tobar: 'topbar',active:{
+                [0]:'topbar-item focus',
+                [1]:'topbar-item'
+            }})
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let { params } = nextProps;
+        if (params.id) {
+            this.setState({ tobar: 'topbar shoptopbar',active:{
+                [0]:'topbar-item',
+                [1]:'topbar-item'
+            }})
+        }
+        else {
+            this.setState({ tobar: 'topbar',active:{
+                [0]:'topbar-item focus',
+                [1]:'topbar-item'
+            }})
+        }
     }
 
     handleMenuClick(index, e) {
@@ -46,7 +80,7 @@ class Header extends Component {
         return (
             <div>
                 <div>
-                    <header className="topbar" role="navigation">
+                    <header className={this.state.tobar} role="navigation">
                         <div className="container clearfix">
                             <h1>
                                 <a href="javascript:void(0);" className="topbar-logo">
@@ -60,7 +94,7 @@ class Header extends Component {
                                 <div className="topbar-profilebox">
                                     <span className="topbar-profilebox-wrapper">
                                         {
-                                            this.state.userName == '' || this.state.userName == null ? <a href="javascript:void(0)" style={{color:'#fff'}}>请登录</a> :
+                                            this.state.userName == '' || this.state.userName == null ? <a href="javascript:void(0)" style={{ color: '#fff' }}>请登录</a> :
                                                 <span className="topbar-profilebox-username">当前用户:{this.state.userName}</span>
                                         }
                                     </span>

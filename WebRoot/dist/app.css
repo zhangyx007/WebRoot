@@ -96,6 +96,14 @@ button {
   display: block;
   text-decoration: none;
 }
+.shoptopbar {
+  position: absolute;
+  width: 100%;
+  line-height: 48px;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
 .main {
   display: block;
 }
