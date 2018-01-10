@@ -17,7 +17,7 @@ class Header extends Component {
     componentWillMount() {
         let user = sessionStorage.getItem('user');
         //user = 'yxzhang';
-        this.setState({ userName: user })
+        this.setState({ userName: user })  
 
     }
 

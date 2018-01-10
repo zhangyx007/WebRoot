@@ -34702,10 +34702,7 @@ var Shop = function (_Component) {
     function Shop(props) {
         _classCallCheck(this, Shop);
 
-        var _this = _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).call(this, props));
-
-        var params = _this.props.params;
-        return _this;
+        return _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).call(this, props));
     }
 
     _createClass(Shop, [{
