@@ -29737,15 +29737,34 @@ var ShopGuide = function (_Component) {
         _this.propTypes = {
             businesInfo: _propTypes2.default.object
         };
+        _this.state = {
+            overflow: 'hidden',
+            opacity: 0
+        };
         return _this;
     }
 
     _createClass(ShopGuide, [{
+        key: 'handleMouseOver',
+        value: function handleMouseOver() {
+            this.setState({
+                overflow: 'inherit',
+                opacity: 1
+            });
+        }
+    }, {
+        key: 'handleMouseLeave',
+        value: function handleMouseLeave() {
+            this.setState({
+                overflow: 'hidden',
+                opacity: 0
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var businesInfo = this.props.businesInfo;
 
-            console.log(businesInfo);
             return React.createElement(
                 'div',
                 { className: 'shopguide' },
@@ -29757,7 +29776,145 @@ var ShopGuide = function (_Component) {
                         'div',
                         { className: 'shopguide-info' },
                         React.createElement('img', { src: businesInfo.image, alt: businesInfo.title }),
-                        React.createElement('div', { className: 'shopguide-info-wrapper' })
+                        React.createElement(
+                            'div',
+                            { className: 'shopguide-info-wrapper' },
+                            React.createElement(
+                                'div',
+                                null,
+                                React.createElement(
+                                    'h1',
+                                    { title: businesInfo.title },
+                                    businesInfo.title
+                                )
+                            ),
+                            React.createElement(
+                                'p',
+                                { className: 'shopguide-info-rate' },
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    '\u6708\u552E',
+                                    businesInfo.order,
+                                    '\u5355'
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'shopguide-info-extra', onMouseOver: this.handleMouseOver.bind(this), onMouseLeave: this.handleMouseLeave.bind(this), style: { overflow: this.state.overflow, opacity: this.state.opacity } },
+                            React.createElement(
+                                'ul',
+                                null,
+                                React.createElement(
+                                    'li',
+                                    { className: 'shopguide-extra-item shopguide-extra-compete' },
+                                    React.createElement(
+                                        'div',
+                                        null,
+                                        React.createElement(
+                                            'h2',
+                                            { className: 'color-stress' },
+                                            '4.8'
+                                        ),
+                                        React.createElement(
+                                            'p',
+                                            null,
+                                            '\u7EFC\u5408\u8BC4\u4EF7',
+                                            React.createElement('br', null),
+                                            React.createElement(
+                                                'span',
+                                                { className: 'color-mute' },
+                                                '\u9AD8\u4E8E\u5468\u8FB9\u5546\u5BB6'
+                                            ),
+                                            React.createElement(
+                                                'span',
+                                                { className: 'color-stress' },
+                                                '69.5%'
+                                            )
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'div',
+                                        null,
+                                        React.createElement(
+                                            'p',
+                                            null,
+                                            '\u670D\u52A1\u6001\u5EA6',
+                                            React.createElement('div', { className: 'starrating' }),
+                                            React.createElement(
+                                                'span',
+                                                { className: 'color-stress' },
+                                                '4.7\u5206'
+                                            )
+                                        ),
+                                        React.createElement(
+                                            'p',
+                                            null,
+                                            '\u83DC\u54C1\u8BC4\u4EF7',
+                                            React.createElement('div', { className: 'starrating' }),
+                                            React.createElement(
+                                                'span',
+                                                { className: 'color-stress' },
+                                                '4.8\u5206'
+                                            )
+                                        )
+                                    )
+                                ),
+                                React.createElement(
+                                    'li',
+                                    { className: 'shopguide-extra-item' },
+                                    '\u6B22\u8FCE\u5149\u4E34'
+                                ),
+                                React.createElement(
+                                    'li',
+                                    { className: 'shopguide-extra-item address' },
+                                    React.createElement(
+                                        'p',
+                                        null,
+                                        React.createElement(
+                                            'span',
+                                            { className: 'label' },
+                                            '\u5546\u5BB6\u5730\u5740\uFF1A'
+                                        ),
+                                        React.createElement(
+                                            'span',
+                                            null,
+                                            businesInfo.address
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'p',
+                                        null,
+                                        React.createElement(
+                                            'span',
+                                            { className: 'label' },
+                                            '\u8425\u4E1A\u65F6\u95F4\uFF1A'
+                                        ),
+                                        React.createElement(
+                                            'span',
+                                            null,
+                                            businesInfo.businessHours
+                                        )
+                                    )
+                                ),
+                                React.createElement(
+                                    'li',
+                                    { className: 'shopguide-extra-item' },
+                                    React.createElement(
+                                        'p',
+                                        { className: 'shopguide-extra-delivery' },
+                                        '\u7531',
+                                        React.createElement(
+                                            'span',
+                                            null,
+                                            businesInfo.title
+                                        ),
+                                        '\u63D0\u4F9B\u914D\u9001\u670D\u52A1'
+                                    )
+                                )
+                            )
+                        )
                     )
                 )
             );

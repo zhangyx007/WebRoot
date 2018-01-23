@@ -7,7 +7,7 @@ function requestBusinsinfoData(id) {
     return {
         type: REQUEST_BUSINESINFO_DATA
     };
-}
+}  
 
 function receiveBusinsinfoData(result) {
     return {

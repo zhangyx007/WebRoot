@@ -32,7 +32,9 @@ namespace WebRoot.Repositories
                 Title = "满炖(三好旗舰店)",
                 Order = 11206,
                 ArrivTime = "24",
-                DistributionFee = 4
+                DistributionFee = 4,
+                Address = "沈阳市沈河区西顺城街170-1号新恒基国际大厦1009号",
+                BusinessHours = "10:00-21:00"
             };
             return businessInfo;
         }

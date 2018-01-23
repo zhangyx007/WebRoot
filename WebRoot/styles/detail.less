@@ -1,11 +1,12 @@
 ﻿.shopguide img{
+    width:102%;
     height:210px;
 }
 
 .shopguide .container {
     position: absolute;
     display: table;
-    height: 142px;
+    height: 160px;
     font-size: 14px;
     width: 960px;
     margin-left:200px;
@@ -14,6 +15,8 @@
 }
 
 .shopguide-info {
+    width:480px;
+    height:160px;
     position: relative;
     display: table-cell;
     vertical-align: middle;
@@ -35,4 +38,97 @@
     vertical-align:middle;
     width:240px;
     height:71px;
+}
+
+.shopguide-info h1 {
+    font-size: 20px;
+    max-width: 270px;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.shopguide-info-rate {
+    margin: 10px 0;
+}
+
+.shopguide-info-extra {
+    background: rgba(255,255,255,.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding-top: 155px;
+    width: 480px;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    opacity: 0;
+    transition: opacity .1s ease-in-out,max-height .4s ease-in-out;
+    margin-top: 5px;
+    height:160px;
+}
+
+.shopguide-info-extra ul {
+    padding: 0 20px;
+    background-color: #fff;
+    color: #333;
+    list-style: none;
+}
+
+.shopguide-extra-item {
+    padding: 15px 0;
+    border-top: 1px dashed #eee;
+    color: #666;
+}
+
+.shopguide-extra-item .address p{
+    margin-left: 5em;
+}
+
+.shopguide-extra-item:first-child {
+    border-top: none;
+}
+
+.shopguide-extra-compete {
+    display: table;
+    width: 100%;
+    font-size: 12px;
+}
+
+.shopguide-extra-compete h2 {
+    font-size: 28px;
+}
+
+.shopguide-extra-compete > div {
+    position: relative;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.color-stress {
+    color: #f74342;
+}
+
+.color-mute {
+    color: #999;
+}
+
+.starrating {
+    position: relative;
+    display: inline-block;
+    line-height: 1em;
+    color: #ccc;
+}
+
+.shopguide-extra-delivery {
+    margin-bottom: 10px;
+}
+
+.shopguide-extra-delivery span {
+    color: #0089dc;
+    margin: 0 5px;
 }
