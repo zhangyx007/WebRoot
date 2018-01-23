@@ -1,8 +1,10 @@
 ﻿import { combineReducers } from 'redux';
-import { getBusiness } from './main/home'
+import { getBusiness } from './home'
+import { getBusinDetail } from './detail'
 
 let reducers = combineReducers({
-    getBusiness
+    getBusiness,
+    getBusinDetail
 });
 
 export default reducers;

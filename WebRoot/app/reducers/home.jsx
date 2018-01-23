@@ -1,5 +1,5 @@
 ﻿import * as _ from 'lodash'
-import { REQUEST_GET_BUSINESS, RECEVICE_GET_BUSINESS } from '../../actions/main/home'
+import { REQUEST_GET_BUSINESS, RECEVICE_GET_BUSINESS } from '../actions/home'
 
 export function getBusiness(state = { items: [] }, action){
     switch (action.type) {

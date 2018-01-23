@@ -9,7 +9,7 @@ import Business from './containers/main/business'
 import SidebarTab from './containers/sidebar/sidebartab'
 import SidebarContent from './containers/sidebar/sidebarcontent'
 require('es6-promise');
-import { fetchGetBusiness } from './actions/main/home'
+import { fetchGetBusiness } from './actions/home'
 
 const businessFilter = [
     { key: 0, FilterName: '全部商家', active: '' },
@@ -76,7 +76,7 @@ class Home extends React.Component {
                         <Location location={locationName} />
                         <FullText onHandleClick={this.handleSearch} />
                     </div>
-                    <div className="place-tab clearfix container" style={{ marginLeft: '230px' }}>
+                    <div className="place-tab clearfix container" style={{ marginLeft: '305px' }}>
                         <ShowTab />
                     </div>
                     <div className="container">

@@ -18,11 +18,10 @@ class Header extends Component {
         let user = sessionStorage.getItem('user');
         //user = 'yxzhang';
         this.setState({ userName: user })  
-
     }
 
-    componentDidMount(){
-        let { params } = nextProps;
+    componentDidMount() {
+        let { params } = this.props;
         if (params.id) {
             this.setState({ tobar: 'topbar shoptopbar',active:{
                 [0]:'topbar-item',

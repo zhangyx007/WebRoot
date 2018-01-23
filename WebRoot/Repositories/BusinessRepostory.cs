@@ -19,8 +19,22 @@ namespace WebRoot.Repositories
                 ArrivTime = "24",
                 DistributionFee = 4
             };
-            var list = new List<Business>() { business };
+            var list = new List<Business>() { business };      
             return list;
+        }
+
+        public static BusinessDetails Get(string id)
+        {
+            var businessInfo = new BusinessDetails()
+            {
+                ID = Guid.NewGuid().ToString(),
+                Image = "Image/6745acb55e9f0150f02720f22bb44png.webp.jpg",
+                Title = "满炖(三好旗舰店)",
+                Order = 11206,
+                ArrivTime = "24",
+                DistributionFee = 4
+            };
+            return businessInfo;
         }
     }
 }

@@ -82,7 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.jsx" />
-    <Content Include="app\actions\main\home.jsx" />
+    <Content Include="app\actions\detail.jsx" />
+    <Content Include="app\actions\home.jsx" />
     <Content Include="app\components\common\footer.jsx" />
     <Content Include="app\components\common\header.jsx" />
     <Content Include="app\components\main\bussinescontent.jsx" />
@@ -97,14 +98,17 @@
     <Content Include="app\containers\main\showtab.jsx" />
     <Content Include="app\containers\main\tab.jsx" />
     <Content Include="app\containers\shop\index.jsx" />
+    <Content Include="app\containers\shop\shopguide.jsx" />
     <Content Include="app\containers\sidebar\sidebarcontent.jsx" />
     <Content Include="app\containers\sidebar\sidebartab.jsx" />
     <Content Include="app\home.jsx" />
+    <Content Include="app\reducers\detail.jsx" />
     <Content Include="app\reducers\index.jsx" />
-    <Content Include="app\reducers\main\home.jsx" />
+    <Content Include="app\reducers\home.jsx" />
     <Content Include="app\routes.jsx" />
     <Content Include="Global.asax" />
     <Content Include="Image\6745acb55e9f0150f02720f22bb44png.webp.jpg" />
+    <Content Include="Image\shop-bg.0391dd.jpg" />
     <Content Include="Image\takeout.408a87.png" />
     <Content Include="index.html" />
     <Content Include="Web.config" />
@@ -112,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -124,6 +129,7 @@
     <Content Include="package.json" />
     <None Include="packages.config" />
     <Content Include="styles\app.less" />
+    <Content Include="styles\detail.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
