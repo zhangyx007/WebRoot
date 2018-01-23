@@ -492,7 +492,6 @@ button {
   display: table;
   height: 160px;
   font-size: 14px;
-  width: 960px;
   margin-left: 200px;
   margin-right: 200px;
   top: 50px;
@@ -597,6 +596,108 @@ button {
 .shopguide-extra-delivery span {
   color: #0089dc;
   margin: 0 5px;
+}
+.shopguide-server {
+  width: 700px;
+  display: table-cell;
+  padding-right: 100px;
+  vertical-align: middle;
+  color: #fff;
+  text-align: right;
+}
+.shopguide-server > span:first-child {
+  margin-left: 0;
+}
+.shopguide-server > span {
+  display: inline-block;
+  margin-left: 80px;
+  vertical-align: top;
+  text-align: center;
+}
+.shopguide-server-value {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 3px;
+  font-size: 18px;
+}
+.shopguide-favor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 5px;
+  width: 80px;
+  text-align: center;
+  background: #FFF;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 5px 5px;
+  color: #eee;
+  text-decoration: none;
+  margin-top: 5px;
+}
+.shopnav {
+  line-height: 57px;
+  width: 102%;
+  height: 59px;
+  background-color: #fff;
+}
+.shopnav .container {
+  font-size: 14px;
+  margin: 0 auto;
+  margin-left: 200px;
+  margin-right: 200px;
+  width: 100%;
+}
+.shopnav .shopnav-tab {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  color: #333;
+  font-size: 16px;
+  width: 112px;
+  text-align: center;
+  text-decoration: none;
+}
+.shopnav .active {
+  color: #0089dc;
+}
+.shopnav .active:after {
+  right: 0;
+  bottom: 0;
+  border-top: 3px solid;
+}
+.shopnav .shopnav-tab + .shopnav-tab:before,
+.shopnav .shopnav-tab.active:after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.shopnav .shopnav-tab + .shopnav-tab:before {
+  top: 50%;
+  margin-top: -7px;
+  height: 14px;
+  width: 1px;
+  background-color: #ccc;
+}
+.shopnav .shopnav-filter {
+  float: right;
+}
+.shopnav .shopnav-filter > a:first-child {
+  border-left: none;
+}
+.shopnav .shopnav-filter > a {
+  padding: 0 15px;
+}
+.shopnav .shopnav-filter > a {
+  display: inline-block;
+  padding: 0 10px;
+  line-height: 1;
+  border-left: 1px solid #eee;
+  color: #333;
+  text-decoration: none;
+}
+.shopnav shopnav-filter > a.active,
+.shopnav .shopnav-filter > a.active {
+  color: #0089dc;
 }
 
 /*# sourceMappingURL=app.css.map*/

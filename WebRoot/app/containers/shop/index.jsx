@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { fetchBusinsinfoData } from '../../actions/detail'
 import { connect } from 'react-redux'
 import ShopGuide from './shopguide'
+import ShopNav from './shopnav'
+import ShopMain from './shopmain'
 
 class Shop extends Component {
     constructor(props) {
@@ -14,18 +16,30 @@ class Shop extends Component {
         dispatch(fetchBusinsinfoData(params.id));
     }
 
+    handleSort(index) {
+
+    }
+
+    handleTab(index) {
+
+    }
+
     render() {
         const { result } = this.props;
         return (
             <div className="main">
                 <ShopGuide businesInfo={result} />
-            </div>
+                <ShopNav
+                    onHandleSort={this.handleSort.bind(this)}
+                    onHandleTab={this.handleTab.bind(this)}
+                />
+                <ShopMain />
+            </div>  
             );
     }
 }
 
 function mapStateToProp(state) {
-    console.log(state)
     return {
         result: state.getBusinDetail.result
     }

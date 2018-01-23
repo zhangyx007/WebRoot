@@ -88,6 +88,8 @@
     <Content Include="app\components\common\header.jsx" />
     <Content Include="app\components\main\bussinescontent.jsx" />
     <Content Include="app\components\main\bussineslogo.jsx" />
+    <Content Include="app\components\shopguideserver.jsx" />
+    <Content Include="app\components\shopnavtab.jsx" />
     <Content Include="app\components\sidebar\sidebarcart.jsx" />
     <Content Include="app\components\sidebar\sidebarmiddle.jsx" />
     <Content Include="app\components\sidebar\summary.jsx" />
@@ -99,6 +101,10 @@
     <Content Include="app\containers\main\tab.jsx" />
     <Content Include="app\containers\shop\index.jsx" />
     <Content Include="app\containers\shop\shopguide.jsx" />
+    <Content Include="app\containers\shop\shopguideinfo.jsx" />
+    <Content Include="app\containers\shop\shopguideserver.jsx" />
+    <Content Include="app\containers\shop\shopmain.jsx" />
+    <Content Include="app\containers\shop\shopnav.jsx" />
     <Content Include="app\containers\sidebar\sidebarcontent.jsx" />
     <Content Include="app\containers\sidebar\sidebartab.jsx" />
     <Content Include="app\home.jsx" />
