@@ -7,7 +7,8 @@ class ShopMain extends Component {
     constructor(props) {
         super(props)
         this.propType = {
-            categorys: PropTypes.array.isRequired
+            categorys: PropTypes.array.isRequired,
+            commodity: PropTypes.array.isRequired
         }
     }
 
@@ -16,7 +17,7 @@ class ShopMain extends Component {
     }
 
     render() {
-        const { categorys } = this.props;
+        const { categorys,commodity } = this.props;
         return (
             <div className="shopmain container">
                 <div className="shopmenu">
@@ -24,7 +25,10 @@ class ShopMain extends Component {
                         categorys={categorys}
                         onHandleCategory={this.handleCategory.bind(this)}
                     />
-                    <ShopMenuMain />
+                    <ShopMenuMain
+                        categorys={categorys}
+                        commodity={commodity}
+                    />
                 </div>
             </div>
             );

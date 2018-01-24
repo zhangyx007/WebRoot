@@ -36,8 +36,42 @@ namespace WebRoot.Repositories
                 Address = "沈阳市沈河区西顺城街170-1号新恒基国际大厦1009号",
                 BusinessHours = "10:00-21:00",
                 StartingPrice = 20,
-                Categorys = GetCategory(id)
+                Categorys = GetCategory(id),
+                CommodityList = new List<Commodity>()
             };
+            var comitiy = new Commodity()
+            {
+                ID = Guid.NewGuid().ToString(),
+                Name = "珍珠奶茶/大杯",
+                Image = "Image/1.png",
+                Price = 10,
+                Details = "醇香奶茶中加入一颗颗香Q弹牙、嚼劲十足的珍珠，人气饮品好喝不簡單。",
+                CategoryId = 0,
+                Orders = "206"
+            };
+            var comitiy1 = new Commodity()
+            {
+                ID = Guid.NewGuid().ToString(),
+                Name = "珍珠奶茶/大杯",
+                Image = "Image/1.png",
+                Price = 10,
+                Details = "醇香奶茶中加入一颗颗香Q弹牙、嚼劲十足的珍珠，人气饮品好喝不簡單。",
+                CategoryId = 0,
+                Orders = "206"
+            };
+            var comitiy2 = new Commodity()
+            {
+                ID = Guid.NewGuid().ToString(),
+                Name = "珍珠奶茶/大杯",
+                Image = "Image/1.png",
+                Price = 10,
+                Details = "醇香奶茶中加入一颗颗香Q弹牙、嚼劲十足的珍珠，人气饮品好喝不簡單。",
+                CategoryId = 0,
+                Orders = "206"
+            };
+            businessInfo.CommodityList.Add(comitiy);
+            businessInfo.CommodityList.Add(comitiy1);
+            businessInfo.CommodityList.Add(comitiy2);
             return businessInfo;
         }
 

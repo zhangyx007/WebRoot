@@ -47,9 +47,11 @@ namespace WebRoot.ViewModels
     public class Commodity
     {
         public string ID { get; set; }
+        public string Name { get; set; }
         public string Image { get; set; }
         public int Price { get; set; }
         public string Details { get; set; }
         public string Orders { get; set; }
+        public int CategoryId { get; set; }
     }
 }

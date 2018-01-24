@@ -713,7 +713,7 @@ button {
   background-color: #fff;
   border: 1px solid #eee;
   z-index: 101;
-  width: 885px;
+  width: 870px;
 }
 .shopmenu-nav a.active {
   color: #fff;
@@ -734,6 +734,96 @@ button {
   overflow: hidden;
   vertical-align: top;
   text-decoration: none;
+}
+.shopmenu-main.grid .shopmenu-list {
+  width: 106%;
+}
+.shopmenu-title {
+  padding: 20px 0 10px 15px;
+  font-size: 20px;
+}
+.shopmenu-title span {
+  font-size: 12px;
+  color: #999;
+  margin-left: 5px;
+}
+.shopmenu-main.grid .shopmenu-food {
+  position: relative;
+  float: left;
+  margin-right: 2%;
+  padding-right: 10px;
+  width: 48%;
+}
+.shopmenu-food {
+  margin-bottom: 12px;
+  font-size: 12px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  height: 132px;
+}
+.shopmenu-main.grid .shopmenu-food img {
+  float: left;
+  margin-right: 14px;
+  width: 130px;
+  height: 130px;
+}
+.shopmenu-main.grid .shopmenu-food-name {
+  margin-top: 10px;
+}
+.shopmenu-food-name,
+.shopmenu-food-price {
+  font-size: 14px;
+  font-weight: 700;
+}
+.ui-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.color-mute {
+  color: #999;
+}
+.shopmenu-main.grid .shopmenu-food-price {
+  position: absolute;
+  bottom: 10px;
+}
+.shopmenu-food-name,
+.shopmenu-food-price {
+  font-size: 14px;
+  font-weight: 700;
+}
+.color-stress {
+  color: #f74342;
+}
+.shopmenu-food-price small {
+  margin-left: 3px;
+  font-size: 12px;
+  color: #888;
+}
+.shop-cartbutton {
+  display: inline-block;
+  background-color: #0089dc;
+  color: #fff;
+}
+.shop-cartbutton,
+.shop-cartctrl {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border: 0;
+  cursor: pointer;
+  width: 90px;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 20px;
+  text-align: center;
+  outline: 0;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  height: 0;
+  clear: both;
 }
 
 /*# sourceMappingURL=app.css.map*/

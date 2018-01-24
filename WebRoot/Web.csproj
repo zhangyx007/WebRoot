@@ -89,6 +89,7 @@
     <Content Include="app\components\main\bussinescontent.jsx" />
     <Content Include="app\components\main\bussineslogo.jsx" />
     <Content Include="app\components\shopguideserver.jsx" />
+    <Content Include="app\components\shopmenutitle.jsx" />
     <Content Include="app\components\shopnavtab.jsx" />
     <Content Include="app\components\sidebar\sidebarcart.jsx" />
     <Content Include="app\components\sidebar\sidebarmiddle.jsx" />
@@ -115,6 +116,8 @@
     <Content Include="app\reducers\home.jsx" />
     <Content Include="app\routes.jsx" />
     <Content Include="Global.asax" />
+    <Content Include="Image\1.png" />
+    <Content Include="Image\231eb6aca089b9d458603cf2fdbb8jpeg.webp" />
     <Content Include="Image\6745acb55e9f0150f02720f22bb44png.webp.jpg" />
     <Content Include="Image\shop-bg.0391dd.jpg" />
     <Content Include="Image\takeout.408a87.png" />
