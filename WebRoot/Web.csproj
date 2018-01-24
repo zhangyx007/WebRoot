@@ -104,6 +104,8 @@
     <Content Include="app\containers\shop\shopguideinfo.jsx" />
     <Content Include="app\containers\shop\shopguideserver.jsx" />
     <Content Include="app\containers\shop\shopmain.jsx" />
+    <Content Include="app\containers\shop\shopmenumain.jsx" />
+    <Content Include="app\containers\shop\shopmenunav.jsx" />
     <Content Include="app\containers\shop\shopnav.jsx" />
     <Content Include="app\containers\sidebar\sidebarcontent.jsx" />
     <Content Include="app\containers\sidebar\sidebartab.jsx" />

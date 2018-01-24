@@ -24,3 +24,4 @@ export const fetchBusinsinfoData = id => {
             .then(json => dispatch(receiveBusinsinfoData(json)))
     }
 }
+

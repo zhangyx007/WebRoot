@@ -29734,6 +29734,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//const categorys = [
+//    { id: 0, category: '热销',active:''},
+//    { id: 1, category: '季节限定', active: ''},
+//    { id: 2, category: '白色先醇', active: ''},
+//    { id: 3, category: '醇香奶茶', active: ''},
+//    { id: 4, category: '醇黑浓情', active: ''},
+//    { id: 5, category: '鲜果鲜茶', active: ''},
+//    { id: 6, category: '益菌多多', active: ''},
+//]
+
 var Shop = function (_Component) {
     _inherits(Shop, _Component);
 
@@ -29764,6 +29774,7 @@ var Shop = function (_Component) {
         value: function render() {
             var result = this.props.result;
 
+            console.log(result);
             return React.createElement(
                 'div',
                 { className: 'main' },
@@ -29772,7 +29783,7 @@ var Shop = function (_Component) {
                     onHandleSort: this.handleSort.bind(this),
                     onHandleTab: this.handleTab.bind(this)
                 }),
-                React.createElement(_shopmain2.default, null)
+                result.categorys != null && React.createElement(_shopmain2.default, { categorys: result.categorys })
             );
         }
     }]);
@@ -30803,7 +30814,7 @@ function getBusinDetail() {
         case _detail.REQUEST_BUSINESINFO_DATA:
             return Object.assign({}, state, {
                 result: []
-            });;
+            });
         case _detail.RECEIVE_BUSINESINFO_DATA:
             return Object.assign({}, state, {
                 result: action.result
@@ -35568,6 +35579,14 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _shopmenunav = __webpack_require__(145);
+
+var _shopmenunav2 = _interopRequireDefault(_shopmenunav);
+
+var _shopmenumain = __webpack_require__(146);
+
+var _shopmenumain2 = _interopRequireDefault(_shopmenumain);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35582,13 +35601,37 @@ var ShopMain = function (_Component) {
     function ShopMain(props) {
         _classCallCheck(this, ShopMain);
 
-        return _possibleConstructorReturn(this, (ShopMain.__proto__ || Object.getPrototypeOf(ShopMain)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (ShopMain.__proto__ || Object.getPrototypeOf(ShopMain)).call(this, props));
+
+        _this.propType = {
+            categorys: _propTypes2.default.array.isRequired
+        };
+        return _this;
     }
 
     _createClass(ShopMain, [{
+        key: 'handleCategory',
+        value: function handleCategory(id) {
+            console.log(id);
+        }
+    }, {
         key: 'render',
         value: function render() {
-            return React.createElement('div', { className: 'shopmain container' });
+            var categorys = this.props.categorys;
+
+            return React.createElement(
+                'div',
+                { className: 'shopmain container' },
+                React.createElement(
+                    'div',
+                    { className: 'shopmenu' },
+                    React.createElement(_shopmenunav2.default, {
+                        categorys: categorys,
+                        onHandleCategory: this.handleCategory.bind(this)
+                    }),
+                    React.createElement(_shopmenumain2.default, null)
+                )
+            );
         }
     }]);
 
@@ -35596,6 +35639,163 @@ var ShopMain = function (_Component) {
 }(_react.Component);
 
 exports.default = ShopMain;
+
+/***/ }),
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ShopMenuNav = function (_Component) {
+    _inherits(ShopMenuNav, _Component);
+
+    function ShopMenuNav(props) {
+        _classCallCheck(this, ShopMenuNav);
+
+        var _this = _possibleConstructorReturn(this, (ShopMenuNav.__proto__ || Object.getPrototypeOf(ShopMenuNav)).call(this, props));
+
+        _this.propType = {
+            categorys: _propTypes2.default.array.isRequired,
+            onHandleCategory: _propTypes2.default.func
+        };
+        var categorys = _this.props.categorys;
+
+        _this.state = {
+            categorys: categorys
+        };
+        return _this;
+    }
+
+    _createClass(ShopMenuNav, [{
+        key: 'handleCategory',
+        value: function handleCategory(id) {
+            var arry = this.state.categorys;
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = arry[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var p = _step.value;
+
+                    if (p.id === id) {
+                        p.active = 'active';
+                    } else {
+                        p.active = '';
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            this.setState({
+                categorys: arry
+            });
+            this.props.onHandleCategory(id);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return React.createElement(
+                'div',
+                { className: 'shopmenu-nav', style: { maxHeight: '460px' } },
+                this.state.categorys.map(function (p) {
+                    return React.createElement(
+                        'a',
+                        { href: 'javascript:', key: p.id, onClick: _this2.handleCategory.bind(_this2, p.id), className: p.active },
+                        p.category
+                    );
+                })
+            );
+        }
+    }]);
+
+    return ShopMenuNav;
+}(_react.Component);
+
+exports.default = ShopMenuNav;
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ShopMenuMain = function (_Component) {
+    _inherits(ShopMenuMain, _Component);
+
+    function ShopMenuMain(props) {
+        _classCallCheck(this, ShopMenuMain);
+
+        return _possibleConstructorReturn(this, (ShopMenuMain.__proto__ || Object.getPrototypeOf(ShopMenuMain)).call(this, props));
+    }
+
+    _createClass(ShopMenuMain, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement('div', { className: 'shopmenu-main grid' });
+        }
+    }]);
+
+    return ShopMenuMain;
+}(_react.Component);
+
+exports.default = ShopMenuMain;
 
 /***/ })
 /******/ ]);

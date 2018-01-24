@@ -11,10 +11,12 @@ namespace WebRoot.Controllers
     [RoutePrefix("api/detail")]
     public class DetailController : ApiController
     {
+        BusinessRepostory _businessRepostory = new BusinessRepostory();
+
         [HttpPost,Route("{id}")]
         public object GetBusinsdetail(string id)
         {
-            return BusinessRepostory.Get(id);
+            return _businessRepostory.Get(id);
         }
     }
 }

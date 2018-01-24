@@ -8,7 +8,7 @@ namespace WebRoot.Repositories
 {
     public class BusinessRepostory
     {
-        public static List<Business> Get()
+        public List<Business> Get()
         {
             var business = new Business()
             {
@@ -23,7 +23,7 @@ namespace WebRoot.Repositories
             return list;
         }
 
-        public static BusinessDetails Get(string id)
+        public BusinessDetails Get(string id)
         {
             var businessInfo = new BusinessDetails()
             {
@@ -35,9 +35,58 @@ namespace WebRoot.Repositories
                 DistributionFee = 4,
                 Address = "沈阳市沈河区西顺城街170-1号新恒基国际大厦1009号",
                 BusinessHours = "10:00-21:00",
-                StartingPrice = 20
+                StartingPrice = 20,
+                Categorys = GetCategory(id)
             };
             return businessInfo;
+        }
+
+        private List<Categorys> GetCategory(string id)
+        {
+            var category0 = new Categorys()
+            {
+                ID = 0,
+                Category = "热销"
+            };
+            var category1 = new Categorys()
+            {
+                ID = 1,
+                Category = "季节限定"
+            };
+            var category2 = new Categorys()
+            {
+                ID = 2,
+                Category = "白色先醇"
+            };
+            var category3 = new Categorys()
+            {
+                ID = 3,
+                Category = "醇香奶茶"
+            };
+            var category4 = new Categorys()
+            {
+                ID = 4,
+                Category = "醇黑浓情"
+            };
+            var category5 = new Categorys()
+            {
+                ID = 5,
+                Category = "鲜果鲜茶"
+            };
+            var category6 = new Categorys()
+            {
+                ID = 6,
+                Category = "益菌多多"
+            };
+            var listCategory = new List<Categorys>();
+            listCategory.Add(category0);
+            listCategory.Add(category1);
+            listCategory.Add(category2);
+            listCategory.Add(category3);
+            listCategory.Add(category4);
+            listCategory.Add(category5);
+            listCategory.Add(category6);
+            return listCategory;
         }
     }
 }

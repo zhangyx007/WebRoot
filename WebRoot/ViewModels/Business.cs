@@ -35,6 +35,13 @@ namespace WebRoot.ViewModels
         public List<string> CommodityClassifications { get; set; }
         //商品
         public List<Commodity> CommodityList { get; set; }
+        public List<Categorys> Categorys { get; set; }
+    }
+
+    public class Categorys
+    {
+        public int ID { get; set; }
+        public string Category { get; set; }
     }
 
     public class Commodity

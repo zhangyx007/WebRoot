@@ -699,5 +699,41 @@ button {
 .shopnav .shopnav-filter > a.active {
   color: #0089dc;
 }
+.shopmain {
+  margin-top: 20px;
+  margin-left: 200px!important;
+}
+.shopmenu {
+  float: left;
+  width: 75%;
+  margin-top: 20px;
+}
+.shopmenu-nav {
+  padding: 10px 15px 5px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  z-index: 101;
+  width: 885px;
+}
+.shopmenu-nav a.active {
+  color: #fff;
+}
+.shopmenu-nav a.active,
+.shopmenu-nav a.active:hover {
+  background-color: #0089dc;
+}
+.shopmenu-nav a {
+  display: inline-block;
+  margin: 5px;
+  padding: 3px 10px;
+  width: 18%;
+  border-radius: 2px;
+  color: #666;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: top;
+  text-decoration: none;
+}
 
 /*# sourceMappingURL=app.css.map*/
