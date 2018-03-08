@@ -44,8 +44,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDao\DatabaseContextManager.cs" />
+    <Compile Include="DaoCore\Contexts\AuthorisedQueryContext.cs" />
+    <Compile Include="DaoCore\Contexts\BaseContext.cs" />
+    <Compile Include="DaoCore\Contexts\SingleKeyEntityContext.cs" />
+    <Compile Include="DaoCore\EntityManagerFactory.cs" />
+    <Compile Include="DaoCore\IQueryBehavior.cs" />
+    <Compile Include="DaoCore\Util\QueryUtil.cs" />
+    <Compile Include="EntityManager\EntityManager\EntityManager.cs" />
+    <Compile Include="EntityManager\IEntityManager.cs" />
     <Compile Include="IBusinessDao.cs" />
     <Compile Include="Impl\BusinessDaoImpl.cs" />
+    <Compile Include="Model\IDatabaseContext.cs" />
     <Compile Include="Uility\BusinessConverter.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +63,9 @@
       <HintPath>..\packages\Unity.5.5.6\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
     <Reference Include="Unity.Abstractions, Version=3.1.3.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.5.6\lib\net45\Unity.Abstractions.dll</HintPath>
     </Reference>
